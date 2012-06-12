@@ -1,0 +1,11 @@
+This scripts scrapes the top 20 songs from DJbooth.net so they can be
+burned onto a CD or saved as an MP3.
+
+This script can scrape music from the following sites
+- DJbooth.net
+- Soundcloud.com
+- Youtube.com
+
+Future Support
+- Vimeo.com
+
