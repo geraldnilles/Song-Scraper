@@ -116,6 +116,26 @@ def soundcloud(filename,html):
 
 	return filename
 
+def vimeo(filename,html):
+	## Grab url using re
+	theRE = "http://player.vimeo.com/video/(.*?)"
+	
+	html = get_url_text(playerurl)
+	## Grab redirect info from player html
+	# clip_id is the end of the player url
+	# sig is from the following RE
+	theRE = "\"signature\":\"(.*?)\""  ## Can limit to only hex values
+	# time is from the following RE
+	theRE = "\"timestamp\":\"(.*?)\"" ## Can limit to only digits
+	# quality will be hd
+	# codecs will be H264
+	# type will be moogaloop
+	
+	## HEre is a sample link
+	#http://player.vimeo.com/play_redirect?clip_id=43146608&sig=b55dbe0c52d9cff8d47f73dd6ee2ed79&time=1339641240&quality=sd&codecs=H264,VP8,VP6&type=moogaloop&embed_location=
+	
+	convert2mp3(videourl,filename)  ## THis can be a function shared by video sources
+	
 
 def clear_media():
 	try:
