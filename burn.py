@@ -5,7 +5,10 @@
 import sys
 import os, shutil
 
-shutil.rmtree("wavs")
+try:
+	shutil.rmtree("wavs")
+except:
+	pass
 os.mkdir("wavs")
 i = 0
 
@@ -16,11 +19,14 @@ for mp3 in sorted(os.listdir("./mp3s")):
 	print mp3
 	i += 1
 	os.system("ffmpeg -i ./mp3s/\""+mp3+"\"  wavs/"+str(i)+".wav")
+	## TODO Add normalization
 	f.write("TRACK AUDIO\n")
 	f.write("FILE \"wavs/"+str(i)+".wav\" 0 \n\n")
 
 f.close()
 
 
-# cdrdao write --driver generic-mmc --device /dev/sr1 toc.toc
+os.system("cdrdao write --driver generic-mmc --device /dev/sr1 toc.toc")
+
+shutil.rmtree("wavs")
 
